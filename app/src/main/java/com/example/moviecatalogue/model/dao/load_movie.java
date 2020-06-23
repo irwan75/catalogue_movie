@@ -63,13 +63,12 @@ public class load_movie implements Parcelable {
 
     }
 
-    public load_movie(int id, String poster_path, String title, String release_date, Double popularity, int kode_cast){
+    public load_movie(int id, String poster_path, String title, String release_date, Double popularity){
         this.posterPath = poster_path;
         this.releaseDate = release_date;
         this.id = id;
         this.title = title;
         this.popularity = popularity;
-        this.voteCount = kode_cast;
     }
 
     public static final Comparator<load_movie> BY_NAME_ALPHABETICAL = new Comparator<load_movie>() {

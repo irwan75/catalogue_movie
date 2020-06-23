@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:layout_marginRight="10dp">
 
         <EditText
@@ -20,24 +20,34 @@
             android:layout_toLeftOf="@id/btnSearch"
             android:background="@drawable/bg_input"
             android:ems="5"
-            android:hint="Masukkan Keyword"
-            android:padding="15dp"
+            android:maxLines="1"
+            android:layout_marginRight="-10dp"
+            android:hint="Keyword Title"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
             android:textColor="@android:color/black"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btnSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@id/et_keyword"
+            android:layout_alignBottom="@+id/et_keyword"
+            android:background="@drawable/bg_custom_1"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:textColor="@color/cardview_light_background"
             android:text="Search" />
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_movie_search"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

@@ -85,6 +85,7 @@ public class rv_nPlaying_upcoming extends RecyclerView.Adapter<RecyclerView.View
             case ITEM:
                 final MovieVH movieVH = (MovieVH) holder;
 
+                movieVH.mYear.setText("Release : "+result.getReleaseDate());
                 movieVH.mMovieTitle.setText(result.getTitle());
 
                 movieVH.btnShare.setOnClickListener(new View.OnClickListener() {
@@ -234,9 +235,7 @@ public class rv_nPlaying_upcoming extends RecyclerView.Adapter<RecyclerView.View
      * Main list's content ViewHolder
      */
     protected class MovieVH extends RecyclerView.ViewHolder {
-        private TextView mMovieTitle;
-        private TextView mMovieDesc;
-        private TextView mYear; // displays "year | language"
+        private TextView mMovieTitle, mYear, mMovieDesc;
         private ImageView mPosterImg;
         private ProgressBar mProgress;
         private Button btnShare;

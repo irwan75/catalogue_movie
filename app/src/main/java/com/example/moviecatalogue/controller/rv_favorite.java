@@ -49,7 +49,7 @@ public class rv_favorite extends RecyclerView.Adapter<rv_favorite.ViewHolder> {
     @Override
     public void onBindViewHolder(rv_favorite.ViewHolder holder, int position) {
         holder.tvTitle.setText(arrayList.get(position).getTitle());
-        holder.tvRelease.setText(arrayList.get(position).getReleaseDate());
+        holder.tvRelease.setText("Release : "+arrayList.get(position).getReleaseDate());
         holder.tvOverview.setText(overview.get(position));
         Glide
                 .with(context)

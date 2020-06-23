@@ -2,6 +2,7 @@ package com.example.moviecatalogue.model.request;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.moviecatalogue.model.dao.load_movie;
 
@@ -16,8 +17,9 @@ public class crud_tb {
     }
 
     public void insertData(load_movie loadMovie) {
+        Log.i("Popularity",""+loadMovie.getPopularity());
         String query = "INSERT INTO movie_favorite(id, poster_path, title, release_date, popularity) " +
-                "VALUES(" + loadMovie.getId() + ",'" + loadMovie.getPosterPath() + "','"+ loadMovie.getTitle() +"','"+loadMovie.getReleaseDate()+"','"+loadMovie.getPopularity()+"');";
+                "VALUES(" + loadMovie.getId() + ",'" + loadMovie.getPosterPath() + "','"+ loadMovie.getTitle() +"','"+loadMovie.getReleaseDate()+"',"+loadMovie.getPopularity()+");";
         db.execSQL(query);
     }
 
@@ -33,8 +35,7 @@ public class crud_tb {
             String title = cursor.getString(2);
             String release_date = cursor.getString(3);
             Double popularity = cursor.getDouble(4);
-            int kode_cast = cursor.getInt(5);
-            noname.add(new load_movie(id, poster_path, title, release_date, popularity, kode_cast));
+            noname.add(new load_movie(id, poster_path, title, release_date, popularity));
         }
 
         cursor.close();

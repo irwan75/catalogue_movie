@@ -70,16 +70,23 @@ public class fragment_favourite extends Fragment {
         helper = new sqlite_helper(getContext());
         db = helper.getReadableDatabase();
         crudTb = new crud_tb(db);
-        loadMovies = crudTb.select();
 
         recyclerView = view.findViewById(R.id.rv_favorite);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
+        loadData();
+
+    }
+
+    public void loadData(){
+        loadMovies = crudTb.select();
+
         AndroidNetworking.initialize(getContext());
         for (int i = 0; i<loadMovies.size();i++){
             getDataOverview(loadMovies.get(i).getId());
         }
+
         Handler hnd = new Handler();
         hnd.postDelayed(new Runnable() {
             @Override

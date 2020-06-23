@@ -128,7 +128,7 @@ public class activity_detail extends AppCompatActivity {
 
     private void setValueFirst() {
         tvTitle.setText(loadMovie.getTitle());
-        tvRelease.setText(loadMovie.getReleaseDate());
+        tvRelease.setText("Release : "+loadMovie.getReleaseDate());
         tvOverview.setText(loadMovie.getOverview());
         tvPopularity.setText("" + loadMovie.getPopularity());
         Glide

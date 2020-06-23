@@ -31,8 +31,8 @@
                     android:scaleType="fitXY" />
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:id="@+id/ic_favourite"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
@@ -46,14 +46,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="13dp">
+                android:paddingLeft="13dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="13dp"
+                android:paddingTop="5dp"
+                >
 
                 <TextView
                     android:id="@+id/title_movie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Title" />
+                    android:text="Title"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    />
 
                 <TextView
                     android:id="@+id/release_movie"
@@ -65,7 +73,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cast" />
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    android:text="Cast"
+                    android:layout_marginBottom="1dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_cast_detail"
@@ -77,18 +89,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Overview" />
+                    android:text="Overview"
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    />
 
                 <TextView
                     android:id="@+id/overview_movie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="overview details" />
+                    android:text="overview details"
+                    android:textAlignment="inherit"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Popularity" />
+                    android:text="Popularity"
+                    android:layout_marginTop="12dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/design_default_color_on_secondary"
+                    />
 
                 <TextView
                     android:id="@+id/popularity_movie"
