@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/cardview_light_background"
+        app:tabIndicatorColor="@android:color/background_light"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorFullWidth="false"
+        android:background="@drawable/border_background">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_now_playing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOW_PLAYING">
+
+        </com.google.android.material.tabs.TabItem>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_upcoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:itemTextColor="#333"
+            android:text="UPCOMING" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_sliding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_slider">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</RelativeLayout>

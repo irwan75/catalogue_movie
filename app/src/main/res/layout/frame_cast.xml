@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="95dp"
+        android:src="@drawable/ic_launcher_background"
+        android:scaleType="fitXY"
+        android:id="@+id/img_cast"
+        android:layout_centerHorizontal="true"
+        />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/img_cast"
+        android:layout_alignLeft="@id/img_cast"
+        android:layout_alignTop="@id/img_cast"
+        android:layout_alignBottom="@+id/img_cast"
+        android:padding="15dp"
+        android:id="@+id/progress_circular"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:id="@+id/name_cast"
+        android:textAlignment="center"
+        android:layout_below="@+id/img_cast"
+        android:layout_alignLeft="@+id/img_cast"
+        android:layout_alignRight="@+id/img_cast"
+        android:layout_gravity="center_horizontal"
+        android:textSize="13sp"
+        />
+
+</RelativeLayout>
