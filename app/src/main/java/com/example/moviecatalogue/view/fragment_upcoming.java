@@ -160,7 +160,6 @@ public class fragment_upcoming extends Fragment {
             @Override
             public void onFailure(Call<movie_response> call, Throwable t) {
                 t.printStackTrace();
-                // TODO: 08/11/16 handle failure
             }
         });
     }
