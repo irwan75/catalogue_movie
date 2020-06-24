@@ -74,7 +74,6 @@ public class fragment_now_playing extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         progressBar = view.findViewById(R.id.progressBar_circular);
 
         mn = new MainActivity();
@@ -82,13 +81,13 @@ public class fragment_now_playing extends Fragment {
 //        AndroidNetworking.initialize(getContext());
 //        getTotalPages();
 
-        recycleAdapter = new rv_nPlaying_upcoming(getContext());
         mRecyclerView = view.findViewById(R.id.rv_now_playing);
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        recycleAdapter = new rv_nPlaying_upcoming(getContext());
         mRecyclerView.setAdapter(recycleAdapter);
 
         mRecyclerView.addOnScrollListener(new pagination_scroll_listener(linearLayoutManager) {
@@ -138,6 +137,8 @@ public class fragment_now_playing extends Fragment {
 
                 if (currentPage <= TOTAL_PAGES) recycleAdapter.addLoadingFooter();
                 else isLastPage = true;
+
+
             }
 
             @Override

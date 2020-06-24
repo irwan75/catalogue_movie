@@ -24,6 +24,7 @@ public class sliding_adapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
+
                 return new fragment_now_playing();
             case 1:
                 return new fragment_upcoming();

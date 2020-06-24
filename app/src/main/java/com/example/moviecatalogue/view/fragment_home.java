@@ -32,6 +32,7 @@ public class fragment_home extends Fragment {
 
         mViewPager = view.findViewById(R.id.view_pager_sliding);
 
+        mViewPager.setCurrentItem(0);
         mSliding_adapter = new sliding_adapter(getActivity().getSupportFragmentManager(), mTabLayout.getTabCount());
         mViewPager.setAdapter(mSliding_adapter);
 
