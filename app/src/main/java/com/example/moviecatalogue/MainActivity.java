@@ -5,19 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.moviecatalogue.controller.fragment_controller;
 import com.example.moviecatalogue.view.*;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity  {
 
     public static String API_KEY = "ad5f8b8c7050cd1ce18f2e08959a6dab";
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle abdt;
@@ -78,9 +84,16 @@ public class MainActivity extends AppCompatActivity  {
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
+        }else if (back_pressed+TIME_DELAY > System.currentTimeMillis()){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }else{
+            Toast.makeText(this, "Tekan back lagi untuk keluar", Toast.LENGTH_SHORT).show();
         }
+        back_pressed = System.currentTimeMillis();
     }
 
 }

@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.moviecatalogue.MainActivity;
 import com.example.moviecatalogue.R;
 import com.example.moviecatalogue.controller.rv_nPlaying_upcoming;
@@ -23,6 +27,9 @@ import com.example.moviecatalogue.model.dao.load_movie;
 import com.example.moviecatalogue.model.dao.movie_response;
 import com.example.moviecatalogue.model.request.API_interface;
 import com.example.moviecatalogue.model.request.API_request;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -43,7 +50,7 @@ public class fragment_upcoming extends Fragment {
     private boolean isLoading = false;
     private boolean isLastPage = false;
     // limiting to 5 for this tutorial, since total pages in actual API is very large. Feel free to modify.
-    private int TOTAL_PAGES = 5;
+    private int TOTAL_PAGES = 10;
     private int currentPage;
 
     private API_interface api_interface;
@@ -78,6 +85,8 @@ public class fragment_upcoming extends Fragment {
 
         mn = new MainActivity();
         chooseLanguange = new value_handle();
+//        AndroidNetworking.initialize(getContext());
+//        getTotalPages();
 
         mRecyclerView.addOnScrollListener(new pagination_scroll_listener(linearLayoutManager) {
             @Override
@@ -170,4 +179,29 @@ public class fragment_upcoming extends Fragment {
                 currentPage
         );
     }
+
+//    public void getTotalPages() {
+//        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key="+mn.API_KEY+"&language="+chooseLanguange.LANGUANGE;
+//        AndroidNetworking.get(url)
+//                .setTag("test")
+//                .setPriority(Priority.MEDIUM)
+//                .build()
+//                .getAsJSONObject(new JSONObjectRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            TOTAL_PAGES = Integer.parseInt(response.getString("total_pages"));
+////                            Log.i("Nilai", ""+response.getString("total_pages"));
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError anError) {
+//
+//                    }
+//                });
+//
+//    }
 }

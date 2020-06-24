@@ -3,6 +3,7 @@ package com.example.moviecatalogue.view;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -43,6 +45,7 @@ public class fragment_favourite extends Fragment {
     rv_favorite rv_favorite_adapter;
     MainActivity mainActivity;
     ProgressBar progressBar;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     sqlite_helper helper;
     SQLiteDatabase db;
@@ -66,6 +69,7 @@ public class fragment_favourite extends Fragment {
         mainActivity = new MainActivity();
         valueHandle = new value_handle();
 
+        swipeRefreshLayout = view.findViewById(R.id.sw_layout);
         progressBar = view.findViewById(R.id.progressBar_circular);
         helper = new sqlite_helper(getContext());
         db = helper.getReadableDatabase();
@@ -74,6 +78,21 @@ public class fragment_favourite extends Fragment {
         recyclerView = view.findViewById(R.id.rv_favorite);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
+
+        swipeRefreshLayout.setColorSchemeResources(R.color.greenSea);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadData();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
 
         loadData();
 

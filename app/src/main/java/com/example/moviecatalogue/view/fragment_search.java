@@ -3,6 +3,7 @@ package com.example.moviecatalogue.view;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.moviecatalogue.MainActivity;
 import com.example.moviecatalogue.R;
 import com.example.moviecatalogue.controller.rv_nPlaying_upcoming;
@@ -26,6 +31,9 @@ import com.example.moviecatalogue.model.dao.load_movie;
 import com.example.moviecatalogue.model.dao.movie_response;
 import com.example.moviecatalogue.model.request.API_interface;
 import com.example.moviecatalogue.model.request.API_request;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -74,15 +82,13 @@ public class fragment_search extends Fragment {
 
         mn = new MainActivity();
         chooseLanguange = new value_handle();
+//        AndroidNetworking.initialize(getContext());
 
-        recycleAdapter = new rv_nPlaying_upcoming(getContext());
         mRecyclerView = view.findViewById(R.id.list_movie_search);
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        mRecyclerView.setAdapter(recycleAdapter);
 
         mRecyclerView.addOnScrollListener(new pagination_scroll_listener(linearLayoutManager) {
             @Override
@@ -128,8 +134,11 @@ public class fragment_search extends Fragment {
                     hnd.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+//                            getTotalPages();
                             api_interface = API_request.getClient().create(API_interface.class);
                             loadFirstPage();
+                            recycleAdapter = new rv_nPlaying_upcoming(getContext());
+                            mRecyclerView.setAdapter(recycleAdapter);
                             progressDialog.dismiss();
                         }
                     }, 3000);
@@ -193,5 +202,30 @@ public class fragment_search extends Fragment {
                 currentPage
         );
     }
+
+//    public void getTotalPages() {
+//        String url = "https://api.themoviedb.org/3/search/movie?api_key="+mn.API_KEY+"&language="+chooseLanguange.LANGUANGE+"&query="+et_keyword.getText().toString()+"&include_adult=true";
+//        AndroidNetworking.get(url)
+//                .setTag("test")
+//                .setPriority(Priority.MEDIUM)
+//                .build()
+//                .getAsJSONObject(new JSONObjectRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            TOTAL_PAGES = Integer.parseInt(response.getString("total_pages"));
+////                            Log.i("Nilai", ""+response.getString("total_pages"));
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError anError) {
+//
+//                    }
+//                });
+//
+//    }
 
 }

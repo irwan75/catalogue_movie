@@ -30,10 +30,6 @@ public class fragment_setting extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        rbEnglish = view.findViewById(R.id.lg_english);
-//        rbGerman = view.findViewById(R.id.lg_german);
-//        rbFrench = view.findViewById(R.id.lg_french);
-//        rbBulgarian = view.findViewById(R.id.lg_bulgarian);
         rgLanguange = view.findViewById(R.id.rgBahasa);
         chooseLanguange = new value_handle();
 
